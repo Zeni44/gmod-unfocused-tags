@@ -85,7 +85,7 @@ hook.Add("PostDrawTranslucentRenderables", tag, function()
 			local alpha = 400 / lply:GetPos():DistToSqr(ply:GetPos())
 			
 			local pos = att.Pos
-			pos = pos + eyeang:Right() * -10
+			pos = pos + eyeang:Right() * -11
 
 			cam.Start3D2D(pos, eyeang, 0.03)
 				surface.SetFont(tag)
