@@ -9,8 +9,8 @@ local Msg     = Msg
 local print   = print
 local CreateClientConVar = CreateClientConVar
 
-local tag = "focus_tab"
-local fancyTag = "FocusTab"
+local tag = "unfocused_tags"
+local fancyTag = "UnfocusedTags"
 
 local shoulddraw = CreateClientConVar("cl_" .. tag, "1")
 

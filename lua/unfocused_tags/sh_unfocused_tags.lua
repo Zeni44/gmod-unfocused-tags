@@ -1,4 +1,4 @@
-local tag     = "focus_tab"
+local tag     = "unfocused_tags"
 
 local PLAYER  = FindMetaTable("Player")
 

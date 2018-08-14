@@ -3,7 +3,7 @@ local util   = util
 
 local PLAYER = FindMetaTable("Player")
 
-local tag    = "focus_tab"
+local tag    = "unfocused_tags"
 
 util.AddNetworkString(tag)
 
