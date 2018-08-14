@@ -18,14 +18,21 @@ local function debugPrint(str)
 	Msg("[" .. fancyTag .. "] ") print(str)
 
 	return false
-end 
+end
+
+local function sendNet(bool)
+	net.Start(tag)
+		net.WriteBool(bool)
+	net.SendToServer()
+end
 
 if system.IsLinux() then 
+	sendNet(true)
 	return debugPrint("Disabled on Linux due to issues???")
 end
 
 surface.CreateFont(tag, {
-	font      = "Bookman",
+	font      = "Helvetica",
 	size      = 90,
 	weight    = 900,
 	antialias = true
@@ -45,9 +52,7 @@ timer.Create(tag, 1, 0, function()
 	end)
 
 	if focused ~= (lply.HasFocus and lply:HasFocus()) then
-		net.Start(tag)
-			net.WriteBool(focused)
-		net.SendToServer()
+		sendNet(focused)
 	end
 end)
 
