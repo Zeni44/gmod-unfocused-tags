@@ -7,9 +7,12 @@ local system  = system
 local timer   = timer
 local Msg     = Msg
 local print   = print
+local CreateClientConVar = CreateClientConVar
 
 local tag = "focus_tab"
 local fancyTag = "FocusTab"
+
+local shoulddraw = CreateClientConVar("cl_" .. tag, "1")
 
 local function debugPrint(str)
 	Msg("[" .. fancyTag .. "] ") print(str)
@@ -32,6 +35,7 @@ local lply         = LocalPlayer()
 local fake_players = {}
 
 timer.Create(tag, 1, 0, function()
+	if shoulddraw and not shoulddraw:GetBool() then return end
 	if not lply:IsValid() then return end
 
 	local focused = system.HasFocus()
@@ -49,6 +53,7 @@ end)
 
 local afktext = "Unfocused"
 hook.Add("PostDrawTranslucentRenderables", tag, function()
+	if shoulddraw and not shoulddraw:GetBool() then return end
 	if not lply:IsValid() then lply = LocalPlayer() return end
 
 	local eyeang = lply:EyeAngles()
