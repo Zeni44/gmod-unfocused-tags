@@ -56,7 +56,8 @@ timer.Create(tag, 1, 0, function()
 	end
 end)
 
-local afktext = "Unfocused"
+local convar  = GetConVar("sv_" .. tag .. "_text")
+local afktext = convar and convar:GetString() or "Unfocused"
 hook.Add("PostDrawTranslucentRenderables", tag, function()
 	if shoulddraw and not shoulddraw:GetBool() then return end
 	if not lply:IsValid() then lply = LocalPlayer() return end
